@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "http-stale-cache-proxy": "git://github.com/bertrandom/http-stale-cache-proxy.git#d323414",
-    "hyperquest": "^0.3.0",
-    "memento-client": "^0.0.1",
-    "send": "^0.5.0"
+    "hyperquest": "0.3.0",
+    "memento-client": "0.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

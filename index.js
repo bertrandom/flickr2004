@@ -2,8 +2,7 @@ var http = require('http'),
 	fs = require('fs'),
 	url = require('url'),
 	memento = require('memento-client'),
-	request = require('hyperquest'),
-	httpStaleCacheProxy = require('http-stale-cache-proxy');
+	request = require('hyperquest');
 
 var WAYBACK_HOST = 'web.archive.org',
 	isAsset = /\/web\/\d{14}/;
@@ -80,14 +79,4 @@ http.createServer(function(req, res) {
 
 	}
 
-}).listen(3001, '127.0.0.1');
-
-httpStaleCacheProxy.createServer({
-	
-	changeOrigin: false,
-	target: {
-		host: '127.0.0.1',
-		port: 3001,
-	}
-
-}).listen(3000);
+}).listen(3313, '127.0.0.1');
