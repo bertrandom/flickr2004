@@ -3,8 +3,32 @@ backend default {
     .port = "3313";
 }
 
+acl purgeable {
+  "localhost";
+}
+
 sub vcl_recv {
   unset req.http.Cookie;
+        if (req.request == "PURGE") {
+                if (!client.ip ~ purgeable) {
+                        error 405 "Not allowed.";
+                }
+                return (lookup);
+        }
+}
+
+sub vcl_hit {
+        if (req.request == "PURGE") {
+                purge;
+                error 200 "Purged.";
+        }
+}
+
+sub vcl_miss {
+        if (req.request == "PURGE") {
+                purge;
+                error 200 "Purged.";
+        }
 }
 
 sub vcl_fetch {
