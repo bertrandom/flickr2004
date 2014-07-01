@@ -9,8 +9,8 @@ var WAYBACK_HOST = 'web.archive.org',
 
 function notFound(res) {
 
-	res.writeHead(404, {'content-type': 'text/plain'});
-	res.end('Page Not Found');
+	res.writeHead(404, {'content-type': 'text/html'});
+	res.end('<html><body><h1>Page Not Found</h1></body></html>');
 
 }
 
@@ -27,6 +27,10 @@ http.createServer(function(req, res) {
 				return notFound(res);
 
 			} else {
+
+				if (mementos[1].datetime.indexOf(' 2004 ') === -1) {
+					return notFound(res);
+				}
 
 				request.get(mementos[1].href, function(err, response) {
 
