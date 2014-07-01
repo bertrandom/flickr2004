@@ -22,7 +22,11 @@ http.createServer(function(req, res) {
 
 		memento('http://www.flickr.com' + req.url, '2004-07-01', function(err, mementos) {
 
-			if (mementos.length > 2) {
+			if (err || mementos.length < 2) {
+
+				return notFound(res);
+
+			} else {
 
 				request.get(mementos[1].href, function(err, response) {
 
@@ -30,10 +34,6 @@ http.createServer(function(req, res) {
 					res.writeHead(response.statusCode, response.headers);
 
 				});
-
-			} else {
-
-				return notFound(res);
 
 			}
 
