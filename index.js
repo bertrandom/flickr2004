@@ -71,12 +71,11 @@ http.createServer(function(req, res) {
 
 			}
 
-			res.writeHead(response.statusCode, response.headers);
-
 		  	if (response.statusCode < 200 || response.statusCode > 299) {
-				return res.end();
+				return notFound(res);
 		  	}
 
+			res.writeHead(response.statusCode, response.headers);
 		  	response.pipe(res);
 
 		}
