@@ -28,9 +28,9 @@ http.createServer(function(req, res) {
 
 			} else {
 
-				if (mementos[1].datetime.indexOf(' 2004 ') === -1) {
-					return notFound(res);
-				}
+				// if (mementos[1].datetime.indexOf(' 2004 ') === -1) {
+				// 	return notFound(res);
+				// }
 
 				request.get(mementos[1].href, function(err, response) {
 
